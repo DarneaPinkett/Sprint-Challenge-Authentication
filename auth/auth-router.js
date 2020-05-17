@@ -40,4 +40,16 @@ router.post('/login', (req, res) => {
   // implement login
 });
 
+function genToken(user) {
+  const payload = {
+    subject: user.id,
+    username:user.username,
+  }
+  const secret = secrets.jwt_secret;
+  const options = {
+    expiresIn: '30 min'
+  };
+  return jwt.sign(payload, secret, options);
+}
+
 module.exports = router;
