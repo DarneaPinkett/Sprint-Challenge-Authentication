@@ -10,7 +10,7 @@
     "server": "nodemon index.js"
   },
   "jest": {
-    "testEnivronment": "node"
+    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",

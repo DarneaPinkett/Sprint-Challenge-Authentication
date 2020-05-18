@@ -1,12 +1,17 @@
 const supertest = require("supertest");
 const server = require('../api/server');
 
-test("GET/", () => {
-    const endpoint = "/"
-    const status = 200
-    
-
-    expect(res.statusCode).toBe(status)
-    expect(res.type).toBe("application/json")
-    expect(res.body.message).toBe("Welcome to the server!")
+describe('GET/ on server file', () => {
+    it('return status 200', async () => {
+        const res = await supertest(server).get('/');
+        expect(res.status).toBe(200);
+    });
+    it('return json', async () => {
+        const res = await supertest(server).get('/');
+        expect(res.type).toBe('application/json');
+    })
+    it('return Welcome to the server!', async () => {
+        const res = await supertest(server).get('/');
+        expect(res.body).toEqual('Welcome to the server!')
+    })
 })
